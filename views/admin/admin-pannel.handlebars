@@ -1,0 +1,78 @@
+<section class="admin-pannel">
+    <div class="container">
+        <div class="row">
+            <h1>Liste Des Véhicules</h1>
+        </div>
+        <div class="row">
+
+            <a href="/add-vehicule">
+                <i class="fas fa-plus-circle fa-5x" style="color: green;">
+                </i>
+            </a>
+
+        </div>
+        <div class="row vehicle-table">
+            <table border="1" class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Année</th>
+                        <th scope="col">Marque</th>
+                        <th scope="col">Modèle</th>
+                        <th scope="col">Kilomètres</th>
+                        <th scope="col">Vitesse(boites)</th>
+                        <th scope="col">Energie</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each posts}}
+                    <tr>
+                        <th scope="row">{{_id}}</th>
+                        <td>{{title}}</td>
+                        <td>{{moment createDate format='DD-MM-YYYY'}}</td>
+                        <td>{{year}}</td>
+                        <td>{{mark}}</td>
+                        <td>{{model}}</td>
+                        <td>{{kilometers}} Km</td>
+                        <td>{{gearbox}}</td>
+                        <td>{{energy}}</td>
+                        <td>{{price}} €</td>
+                        <td>
+                            <a href="/vehicule-edit/{{_id}}"><i class="fas fa-edit fa-lg" style="color: yellow"></i></a>
+                            <i class="fas fa-trash-alt fa-lg" onclick="popupConfirm()" style="cursor:pointer; color:red"></i>
+                        </td>
+                        {{!-- <td>{{vehicule.actions}}</td> --}}
+                    </tr>
+                    <script>
+                        function popupConfirm() {
+                            if (confirm("Etes-vous sur de vouloir supprimer cet article ?")) {
+                                window.location.replace(`/vehicule/delete/{{_id}}`)
+                            } else {
+                                window.location.replace('/admin-pannel')
+                            }
+                        }
+                    </script>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $("tr:odd").css({
+                    "background-color": "red",
+                    "color": "blue"
+                });
+            });
+        </script>
+
+
+
+
+    </div>
+
+</section>

@@ -1,0 +1,140 @@
+<section class="section">
+
+    <div class="container page-title">
+        <h1>Ajouter un véhicule</h1>
+    </div>
+    <div class="container is-fullhd">
+        <form action="/vehicule/post" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="com-md-12">
+                    <div class="field">
+                        <label class="label">Titre</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" name="title">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Marque</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" name="mark">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Modèle</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" name="model">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Année</label>
+                        <div class="control">
+                            <input class="input" type="number" placeholder="Text input" name="year"
+                                onkeypress="return isNumber(event)">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="field">
+                        <label for="energy" class="energie">Energie</label>
+                        <select name="energy">
+                            <option>Essence</option>
+                            <option>Diesel</option>
+                            <option>Electrique</option>
+                            <option>GPL</option>
+                            <option>Hybride</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Kilometrage</label>
+                        <div class="control">
+                            <input class="input" type="number" placeholder="Text input" name="kilometers">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="field">
+                        <div class="control">
+                             <label for="energy" class="energie">Boite de vitesse</label>
+                        <select name="gearbox">
+                            <option>Manuelle</option>
+                            <option>Automatique</option>
+                            <option>Séquentielle</option>
+                        </select>
+                        </div>
+                        bx
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Prix</label>
+                        <div class="control">
+                            <input class="input" type="number" placeholder="Text input" name="price">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Description</label>
+                        <div class="control">
+                            <textarea class="input" type="text" placeholder="Text input" name="content"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Ajouter les photos</label>
+                        <input type="file" class="form-control-file" name="image" accept="image/png, image/jpeg"
+                            id="exampleFormControlFile1" multiple>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button type="submit" class="button is-link">Envoyer</button>
+                        </div>
+                    </div>
+                </div>
+        </form>
+        <form action="/admin-pannel" method="GET">
+            <div class="col-md-6">
+                <div class="control">
+                    <button type="cancel" class="button is-text">Annuler</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</section>
+<script>
+    function isNumber(event) {
+        var keycode = event.keyCode;
+        if (keycode > 47 && keycode < 60) {
+            return true;
+        }
+        return false;
+    }
+</script>

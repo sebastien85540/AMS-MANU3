@@ -1,0 +1,176 @@
+<section class="section">
+    <div class="container is-fullhd">
+
+        <h1>Edition d'un véhicule</h1>
+
+        <form action="/vehiculeEditPost/{{vehicule.id}}" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="com-md-12">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            {{!-- {{#each image}} --}}
+                            <div class="carousel-item active">
+                                <img src="{{vehicule.image}}" class="d-block w-100" name="image" alt="image">
+                            </div>
+                            {{!-- {{/each}} --}}
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="com-md-12">
+                    <div class="field">
+                        <label class="label">Titre</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" name="title"
+                                value="{{vehicule.title}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Marque</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" name="mark"
+                                value="{{vehicule.mark}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Modèle</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" name="model"
+                                value="{{vehicule.model}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Année</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" name="year"
+                                value="{{vehicule.year}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Energie</label>
+                        <div class="control">
+                            <select name="energy">
+                                <option>Essence</option>
+                                <option>Diesel</option>
+                                <option>Electrique</option>
+                                <option>GPL</option>
+                                <option>Hybride</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Kilometrage</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" name="kilometers"
+                                value="{{vehicule.kilometers}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Boite de vitesse</label>
+                        <div class="control">
+                            <select name="gearbox">
+                                <option>Manuelle</option>
+                                <option>Automatique</option>
+                                <option>Séquentielle</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Prix</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input" name="price"
+                                value="{{vehicule.price}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="field">
+                        <label class="label">Description</label>
+                        <div class="control">
+                            <textarea class="input" type="text" placeholder="Text input"
+                                name="content">{{vehicule.content}}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Ajouter les photos</label>
+                        <input type="file" class="file-input" name="image" alt="test" multiple
+                            value="{{vehicule.image}}">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button type="submit" onclick="popupConfirm()" class="button is-link">Envoyer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form action="/admin-pannel" method="GET">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="control">
+                        <button type="cancel" class="button is-text">Annuler</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</section>
+<script>
+    function popupConfirm() {
+        if (confirm("Voulez-vous appliquer ces modifications ?")) {
+            window.location.replace(`/vehiculeEditPost/{{vehicule._id}}`)
+        } else {
+            window.location.replace(`/admin-pannel`)
+        }
+    }
+</script>
